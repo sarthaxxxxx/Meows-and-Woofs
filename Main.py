@@ -16,6 +16,7 @@ from IPython.display import clear_output
 
 root="C:\\Users\\sarth\\Desktop\\Woof and Meow\\cats_dogs\\"
 
+#Labelling of data(y).
 y=[1 if 'cat' in i else 0 for i in os.listdir(root)]
 
 #def number_of_files(test_size):
@@ -26,7 +27,7 @@ print('X_train has {} cat files and {} dog files.'.format(sum(y_train),len(y_tra
 print('X_test has {} cat files and {} dog files.'.format(sum(y_test),len(y_test)-sum(y_test)))
     #return x_train
 
-
+#Splitting of data into train and test files.
 #def read_wav_files(wav_files):
     
     #if not isinstance(wav_files,list):
@@ -42,13 +43,15 @@ print('X_test has {} cat files and {} dog files.'.format(sum(y_test),len(y_test)
 #all_files_cat=np.concatenate(all_files_cat)
 #all_files_dog=np.concatenate(all_files_dog)
 
+#Total duration of individual splits.
 def len_of_files(sample_rate):
     cat_time=len(all_files_cat)/sample_rate
     dog_time=len(all_files_dog)/sample_rate
     #print('Overall, there are {:.2f}s of cat and {:.2f}s of dog sound'.format(cat_time,dog_time))
 
 #print(len_of_files(22050))
-    
+
+#Audio Features    
 def features_go(file):
     x,sample_rate=lb.load(file,duration=5)
     stft = np.abs(lb.stft(x))
